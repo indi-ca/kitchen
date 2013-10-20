@@ -1,0 +1,27 @@
+server {
+    listen 80 default;
+
+    access_log <%= node.app.web_dir %>/logs/nginx_access.log;
+    error_log <%= node.app.web_dir %>/logs/nginx_error.log;
+
+    keepalive_timeout 10;
+
+    location /
+        {
+            proxy_pass http://127.0.0.1:8000;
+        }
+
+    # the content is in the static folder within it
+    location /static {
+        autoindex on;
+        root   /home/deploy/;
+    }
+
+    # do not forget the semi colons
+    # the name of the directory has to exist
+    location /output {
+        autoindex on;
+        root   /home/deploy/applications/ninja_circles/blog/;
+    }
+
+}

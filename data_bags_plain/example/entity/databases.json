@@ -1,0 +1,11 @@
+{
+    "id"        : "databases",
+    "databases": [
+        {
+            "db_name": "db_one",
+            "comment": "db_one db",
+            "username": "db_oneu",
+            "password": "db_one_password"
+        }
+    ]
+}

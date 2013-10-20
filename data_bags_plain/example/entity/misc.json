@@ -1,0 +1,8 @@
+{
+    "id"        : "entity_misc",
+    "bitbucket" :
+    {
+        "user_name" : "bitbucket_username",
+        "password" : "bitbucket_password"
+    }
+}

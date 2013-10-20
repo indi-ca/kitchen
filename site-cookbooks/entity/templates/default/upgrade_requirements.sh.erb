@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd /home/deploy/applications/python_gumtree_scraper
+
+ls -l <%= @application_home %>
+
+<% @application_list.each do |app_item| %>
+
+#<%= app_item.app_name %>
+<%= @virtual_env_home + '/' + app_item.app_name + '/bin/pip install -r ' + @application_home + '/' + app_item.app_name + '/requirements.txt' %>
+
+<% end %>

@@ -1,0 +1,8 @@
+{
+    "id": "repositories",
+    "bitbucket": {
+        "user_name": "bitbucket_username",
+        "password": "bitbucket_password"
+    },
+    "bar": [1, 2, 3, 4]
+}

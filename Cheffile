@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+# To update the cookbooks
+#librarian-chef install --clean
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'runit'
+cookbook 'cron', :git => 'git://github.com/opscode-cookbooks/cron.git'
+cookbook 'database', :git => 'git://github.com/opscode-cookbooks/database.git'
+cookbook 'logwatch', :git => 'git://github.com/opscode-cookbooks/logwatch.git'
+#cookbook 'lockdown-ssh', :git => 'git://github.com/mpowered/chef-lockdown-ssh.git'
+cookbook 'nginx', :git => 'git://github.com/opscode-cookbooks/nginx.git'
+cookbook 'phantomjs', :git => 'git://github.com/customink-webops/phantomjs.git'
+cookbook 'python', :git => 'git://github.com/opscode-cookbooks/python.git'
+cookbook 'postgresql', :git => 'git://github.com/opscode-cookbooks/postgresql.git'
+#cookbook 'gunicorn', :git => 'git://github.com/opscode-cookbooks/gunicorn.git'
+cookbook 'user', :git => 'git://github.com/fnichol/chef-user.git'
+
+
+# cookbook 'chef-client'
+
+# cookbook 'apache2', '>= 1.0.0'
+
+# cookbook 'rvm',
+#   :git => 'https://github.com/fnichol/chef-rvm'
+
+# cookbook 'postgresql',
+#   :git => 'https://github.com/findsyou/cookbooks',
+#   :ref => 'postgresql-improvements'
+# cookbook 'user',
+  # :git => 'git://github.com/fnichol/chef-user.git', :ref => 'v0.3.0'

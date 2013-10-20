@@ -1,0 +1,15 @@
+{
+  "postgresql": {
+    "password": {
+      "postgres": "iloverandompasswordsbutthiswilldo"
+    },
+    "config": {
+      // "port": 49680
+      "port": 5432
+    }
+  },
+
+  "run_list": [
+    "recipe[entity::database_wings]",
+  ],
+}

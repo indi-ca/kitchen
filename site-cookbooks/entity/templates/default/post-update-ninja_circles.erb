@@ -1,0 +1,14 @@
+#!/bin/sh
+GIT_WORK_TREE=$PWD/..
+export GIT_WORK_TREE
+echo 'Checking out the current branch'
+echo $GIT_WORK_TREE
+git checkout -f
+
+# Upgrade requirements
+<%= @virtual_env_home + '/' + @app_item.app_name + '/bin/pip install -r ' + @application_home + '/' + @app_item.app_name + '/requirements.txt' %>
+
+<%= @virtual_env_home + '/' + @app_item.app_name + '/bin/pip freeze' %>
+
+cd blog
+<%= @virtual_env_home + '/' + @app_item.app_name + '/bin/pelican' %>

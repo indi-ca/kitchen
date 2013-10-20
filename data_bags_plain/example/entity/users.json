@@ -1,0 +1,12 @@
+{
+    "id": "users",
+    "users": [
+        {
+            "user_name": "deploy",
+            "tag": "deploy",
+            "comment": "Deployment user",
+            "use_ssh": true,
+            "ssh_key": "key"
+        }
+    ]
+}
