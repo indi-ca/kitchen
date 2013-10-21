@@ -19,7 +19,7 @@ postgresql_connection_info = {:host => "localhost",
 
 databases_repos_bag['databases'].each do |db_item|
 
-  # Drop databases only if this is true
+  # Conditionally drop the databases
   if recreate_databases
     postgresql_database db_item['db_name']  do
       connection postgresql_connection_info

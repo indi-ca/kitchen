@@ -19,3 +19,5 @@ sed -i '$ a\APT::Periodic::Unattended-Upgrade "1";' /etc/apt/apt.conf.d/10period
 
 
 apt-get -y autoremove
+
+shutdown -r now

@@ -19,6 +19,6 @@ scp -P 49690 /Users/indika/.ssh/id_rsa_motion_bucket root@motion:/root/.ssh
 printf "Regenerating data bags"
 rm ~/.chef/motion_secret
 openssl rand -base64 512 > ~/.chef/motion_secret
-rm data_bags/indika/bob.json
-knife solo data bag create indika bob --secret-file /Users/indika/.chef/motion_secret --data-bag-path data_bags -e vim --json-file data_bags/indika/_bob.json
+
+sh prepare_data_bags.sh
 scp -P 49690 ~/.chef/motion_secret root@motion:/root/.chef/motion_secret

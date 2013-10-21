@@ -1,47 +1,69 @@
 {
-  "app": {
-    "name": "entity",
-    //"web_dir": "/var/data/www/apps/entity"
-    "web_dir": "/home/deploy/entity"
-  },
-  "user":{
-    "name": "deploy"
-  },
-  "logwatch":{
-    "email": "indika.piyasena@gmail.com"
-  },
-  "nginx": {
-    "version": "1.2.3",
-    "default_site_enabled": true,
-    "source": {
-      "modules": ["http_gzip_static_module", "http_ssl_module"]
-    }
-  },
-  "postgresql": {
-    "password": {
-      "postgres": "iloverandompasswordsbutthiswilldo"
+    "app": {
+        "name": "entity",
+        "web_dir": "/home/deploy/entity"
     },
-    "config": {
-      // "port": 49680
-      "port": 5432
-    }
-    // "version": "9.2"
-  },
+    "user": {
+        "name": "deploy"
+    },
+    "logwatch": {
+        "email": "indika.piyasena@gmail.com"
+    },
+    "nginx": {
+        "version": "1.2.5",
+        "default_site_enabled": true,
+        "source": {
+            "modules": ["http_gzip_static_module", "http_ssl_module"]
+        }
+    },
+    "postgresql": {
+        "password": {
+            "postgres": "iloverandompasswordsbutthiswilldo"
+        },
+        "config": {
+            // "port": 49680
+            "port": 5432
+        }
+        // "version": "9.2"
+    },
 
-  "run_list": [
-    "recipe[user]",
-    // "recipe[user::data_bag]",
-    "recipe[nginx::source]",
-    "recipe[logwatch]",
-    //"recipe[gunicorn]",
-    "recipe[phantomjs::default]",
-    "recipe[postgresql::server]",
-    "recipe[python]",
-    "recipe[entity::users]",
-    "recipe[entity::database]",
-    "recipe[entity::applications]",
-    "recipe[entity]"
-  ],
+    "rvm": {
+        "rubies": ["2.0.0-p0"],
+        "default_ruby": "2.0.0-p0",
+        "gems": {
+            "1.9.3-p0": [
+                {
+                    "name": "bundler"
+                },
+                {
+                    "name": "rake"
+                },
+                {
+                    "name": "rails",
+                    "version": "4.0.0.beta1"
+                }
+            ]
+        }
+    },
 
-  "base_packages": ["git-core", "bash-completion", "zsh", "finger"]
+
+    "run_list": [
+        "recipe[user]",
+        // "recipe[user::data_bag]",
+        "recipe[nginx::source]",
+        "recipe[logwatch]",
+        //"recipe[gunicorn]",
+        "recipe[phantomjs::default]",
+        "recipe[postgresql::server]",
+        "recipe[python]",
+        "recipe[rvm::system]",
+        "recipe[rvm::user]",
+        "recipe[entity::users]",
+        "recipe[entity::database]",
+        "recipe[entity::applications]",
+        "recipe[entity::blog]",
+        "recipe[entity]"
+    ],
+
+    "base_packages": ["git-core", "bash-completion", "zsh", "finger"]
 }
