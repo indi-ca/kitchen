@@ -14,6 +14,10 @@ cookbook 'database',
          :git => 'git://github.com/opscode-cookbooks/database.git'
 cookbook 'logwatch',
          :git => 'git://github.com/opscode-cookbooks/logwatch.git'
+
+cookbook 'jekyll',
+         :git => 'https://github.com/fooforge/chef-cookbook_jekyll.git'
+
 cookbook 'nginx',
          :git => 'git://github.com/opscode-cookbooks/nginx.git'
 cookbook 'phantomjs',
