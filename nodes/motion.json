@@ -13,7 +13,8 @@
         "version": "1.2.5",
         "default_site_enabled": true,
         "source": {
-            "modules": ["http_gzip_static_module", "http_ssl_module"]
+//            "modules": ["http_gzip_static_module", "http_ssl_module"]
+            "modules": [""]
         }
     },
     "postgresql": {
@@ -46,7 +47,6 @@
         }
     },
 
-
     "run_list": [
         "recipe[user]",
         // "recipe[user::data_bag]",
@@ -58,6 +58,8 @@
         "recipe[python]",
         "recipe[rvm::system]",
         "recipe[rvm::user]",
+//        "recipe[jekyll]",
+//        "role[base]",
         "recipe[entity::users]",
         "recipe[entity::database]",
         "recipe[entity::applications]",
@@ -66,4 +68,6 @@
     ],
 
     "base_packages": ["git-core", "bash-completion", "zsh", "finger"]
+
+
 }
