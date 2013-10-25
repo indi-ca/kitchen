@@ -13,8 +13,7 @@
         "version": "1.2.5",
         "default_site_enabled": true,
         "source": {
-//            "modules": ["http_gzip_static_module", "http_ssl_module"]
-            "modules": [""]
+            "modules": ["http_gzip_static_module", "http_ssl_module"]
         }
     },
     "postgresql": {
@@ -48,9 +47,12 @@
     },
 
     "run_list": [
+        "recipe[apt::default]",
         "recipe[user]",
         // "recipe[user::data_bag]",
-        "recipe[nginx::source]",
+//        "recipe[nginx::http_ssl_module]",
+//        "recipe[nginx::http_gzip_static_module]",
+        "recipe[nginx]",
         "recipe[logwatch]",
         //"recipe[gunicorn]",
         "recipe[phantomjs::default]",
