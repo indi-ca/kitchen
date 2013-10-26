@@ -43,12 +43,12 @@
         "recipe[phantomjs::default]",
         "recipe[postgresql::server]",
         "recipe[python]",
-//        "recipe[jekyll]",
-        "role[base]",
+//        "role[base]",
         "recipe[entity::users]",
         "recipe[entity::database]",
         "recipe[entity::applications]",
         "recipe[entity::blog]",
+        "recipe[ninjacircles]",
         "recipe[entity]"
     ],
 
