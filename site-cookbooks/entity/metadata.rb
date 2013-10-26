@@ -8,8 +8,11 @@ version          "0.0.1"
 
 depends "python"
 depends "database"
+
 depends "rbenv"
+
 depends "nginx"
+
 #depends 'nginx::http_gzip_static_module'
 #depends 'nginx::http_ssl_module'
 

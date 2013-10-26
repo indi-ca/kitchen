@@ -27,27 +27,12 @@
         // "version": "9.2"
     },
 
-    "rvm": {
-        "rubies": ["2.0.0-p0"],
-        "default_ruby": "2.0.0-p0",
-        "gems": {
-            "1.9.3-p0": [
-                {
-                    "name": "bundler"
-                },
-                {
-                    "name": "rake"
-                },
-                {
-                    "name": "rails",
-                    "version": "4.0.0.beta1"
-                }
-            ]
-        }
-    },
 
     "run_list": [
         "recipe[apt::default]",
+        "recipe[rbenv::default]",
+        "recipe[rbenv::ruby_build]",
+
         "recipe[user]",
         // "recipe[user::data_bag]",
 //        "recipe[nginx::http_ssl_module]",
@@ -58,10 +43,8 @@
         "recipe[phantomjs::default]",
         "recipe[postgresql::server]",
         "recipe[python]",
-        "recipe[rvm::system]",
-        "recipe[rvm::user]",
 //        "recipe[jekyll]",
-//        "role[base]",
+        "role[base]",
         "recipe[entity::users]",
         "recipe[entity::database]",
         "recipe[entity::applications]",

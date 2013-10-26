@@ -1,4 +1,4 @@
-#default['jekyll']['deploy_directory'] = '/home/deploy/applications/www/jekyll'
+#default['jekyll']['deploy_directory'] = '/home/deploy/applications/jekyll'
 #default['jekyll']['repository'] = 'https://github.com/fooforge/fooforge.com.git'
 #default['jekyll']['reference'] = 'master'
 #default['jekyll']['user'] = 'deploy'

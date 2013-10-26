@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "Bootstrapping Node"
+printf "/nBootstrapping Node"
 
 
 # Should recreate the directory if it does not exist
