@@ -24,10 +24,10 @@ end
 
 
 
-application_list = []
-application_list.push(PythonApplication.new 'django_instance', 'https://github.com/indika/django_instance.git')
-application_list.push(PythonApplication.new 'python_gumtree_scraper', 'https://github.com/indika/python-gumtree-scraper.git')
-application_list.push(PythonApplication.new 'ninja_circles', 'https://github.com/indika/blog.git')
+applications = []
+applications.push(PythonApplication.new 'django_instance', 'https://github.com/indika/django_instance.git')
+applications.push(PythonApplication.new 'python_gumtree_scraper', 'https://github.com/indika/python-gumtree-scraper.git')
+applications.push(PythonApplication.new 'ninja_circles', 'https://github.com/indika/blog.git')
 
 
 virtual_env_home = '/home/deploy/.virtualenvs'
@@ -35,7 +35,7 @@ application_home = '/home/deploy/applications'
 
 
 
-application_list.each do |app_item|
+applications.each do |app_item|
   puts app_item.app_name
 
   git "#{application_home}/#{app_item.app_name}" do
@@ -100,7 +100,7 @@ template "#{application_home}/upgrade_requirements.sh" do
   variables(
     :virtual_env_home => virtual_env_home,
     :application_home => application_home,
-    :application_list => application_list
+    :application_list => applications
   )
 end
 
@@ -137,9 +137,4 @@ directory '/home/deploy/static' do
   mode 00755
   action :create
 end
-
-# Running the post init
-# execute "feeding" do
-#   command "sh /root/scripts/git_post_init.sh"
-# end
 

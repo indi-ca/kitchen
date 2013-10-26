@@ -21,7 +21,6 @@
             "postgres": "iloverandompasswordsbutthiswilldo"
         },
         "config": {
-            // "port": 49680
             "port": 5432
         }
         // "version": "9.2"
@@ -34,12 +33,8 @@
         "recipe[rbenv::ruby_build]",
 
         "recipe[user]",
-        // "recipe[user::data_bag]",
-//        "recipe[nginx::http_ssl_module]",
-//        "recipe[nginx::http_gzip_static_module]",
         "recipe[nginx]",
         "recipe[logwatch]",
-        //"recipe[gunicorn]",
         "recipe[phantomjs::default]",
         "recipe[postgresql::server]",
         "recipe[python]",
@@ -47,7 +42,6 @@
         "recipe[entity::users]",
         "recipe[entity::database]",
         "recipe[entity::applications]",
-        "recipe[entity::blog]",
         "recipe[ninjacircles]",
         "recipe[entity]"
     ],
