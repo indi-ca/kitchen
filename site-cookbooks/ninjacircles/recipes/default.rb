@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+application_home = '/home/deploy/applications'
+target_dir = "ninjacircles"
 
 
 unless node['jekyll']['packages'].empty?
@@ -100,3 +102,16 @@ bash 'post-init' do
 end
 
 
+template_source = "post-update.erb"
+template_name = "#{application_home}/#{target_dir}/.git/hooks/post-update"
+
+template template_name do
+  source template_source
+  owner  "deploy"
+  group  "deploy"
+  mode   0755
+  variables(
+      :application_home => application_home,
+      :target_dir => target_dir
+  )
+end

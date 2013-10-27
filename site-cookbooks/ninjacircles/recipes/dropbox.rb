@@ -23,3 +23,12 @@ bash 'download-daemon' do
   EOH
   action :run
 end
+
+
+# Copy the manual configuration file in
+cookbook_file "#{application_home}/config_dropbox.sh" do
+  source "config_dropbox.sh"
+  mode 0755
+  owner "deploy"
+  group "deploy"
+end

@@ -13,3 +13,5 @@ alias ll="ls -la"
 plugins=(git rbenv)
 
 
+python ~/applications/dropbox_daemon/dropbox.py status
+

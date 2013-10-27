@@ -5,8 +5,18 @@ echo 'Checking out the current branch'
 echo $GIT_WORK_TREE
 git checkout -f
 
-# Upgrade requirements
-<%= @virtual_env_home + '/' + @app_item.app_name + '/bin/pip install -r ' + @application_home + '/' + @app_item.app_name + '/requirements.txt' %>
 
-<%= @virtual_env_home + '/' + @app_item.app_name + '/bin/pip freeze' %>
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Upgrade requirements
+cd <%= @application_home + '/' + @target_dir %>
+bundle install
+
+rm -rf _site
+jekyll build
+
+
+
+
 
