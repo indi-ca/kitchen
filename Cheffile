@@ -27,20 +27,21 @@ cookbook 'python',
 cookbook 'postgresql',
          :git => 'git://github.com/opscode-cookbooks/postgresql.git'
 
-cookbook 'rbenv',
-         :git => 'git://github.com/RiotGames/rbenv-cookbook.git'
+#cookbook 'rbenv',
+#         :git => 'git://github.com/RiotGames/rbenv-cookbook.git'
 
-#cookbook 'rbenv', git: 'git://github.com/fnichol/chef-rbenv.git'
-#cookbook 'rbenv', git: 'git://github.com/fnichol/chef-rbenv.git', ref: "v0.7.2"
+cookbook 'ruby_build'
+cookbook 'rbenv', git: 'git://github.com/fnichol/chef-rbenv.git'
 
 
 cookbook 'user', :git => 'git://github.com/fnichol/chef-user.git'
 
 
+
+
+
 # cookbook 'chef-client'
-
 # cookbook 'apache2', '>= 1.0.0'
-
 
 # cookbook 'postgresql',
 #   :git => 'https://github.com/findsyou/cookbooks',

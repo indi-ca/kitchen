@@ -27,7 +27,7 @@ end
 applications = []
 applications.push(PythonApplication.new 'django_instance', 'https://github.com/indika/django_instance.git')
 applications.push(PythonApplication.new 'python_gumtree_scraper', 'https://github.com/indika/python-gumtree-scraper.git')
-applications.push(PythonApplication.new 'ninja_circles', 'https://github.com/indika/blog.git')
+#applications.push(PythonApplication.new 'ninja_circles', 'https://github.com/indika/blog.git')
 
 
 virtual_env_home = '/home/deploy/.virtualenvs'
@@ -48,12 +48,13 @@ applications.each do |app_item|
 
   puts "git remote at: #{application_home}/#{app_item.app_name}"
 
-  if app_item.app_name == 'ninja_circles'
-    template_source = "post-update-ninja_circles.erb"
-  else
-    template_source = "post-update.erb"
-  end
+  #if app_item.app_name == 'ninja_circles'
+  #  template_source = "post-update-ninja_circles.erb"
+  #else
+  #  template_source = "post-update.erb"
+  #end
 
+  template_source = "post-update.erb"
   template_name = "#{application_home}/#{app_item.app_name}/.git/hooks/post-update"
 
   template template_name do

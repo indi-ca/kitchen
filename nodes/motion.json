@@ -29,9 +29,8 @@
 
     "run_list": [
         "recipe[apt::default]",
-        "recipe[rbenv::default]",
-        "recipe[rbenv::ruby_build]",
-
+        "recipe[ruby_build]",
+        "recipe[rbenv::user]",
         "recipe[user]",
         "recipe[nginx]",
         "recipe[logwatch]",
@@ -43,6 +42,7 @@
         "recipe[entity::database]",
         "recipe[entity::applications]",
         "recipe[ninjacircles]",
+        "recipe[ninjacircles::dropbox]",
         "recipe[entity]"
     ],
 

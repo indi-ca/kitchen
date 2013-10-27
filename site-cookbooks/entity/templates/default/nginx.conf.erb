@@ -19,14 +19,22 @@ server {
 
     # do not forget the semi colons
     # the name of the directory has to exist
-    location /output {
+    location /_site {
         autoindex on;
-        root   /home/deploy/applications/ninja_circles/blog/;
+        root   /home/deploy/applications/jekyll_blog/;
     }
 }
 
 server {
     listen      80;
+    server_name ninjacircles.com;
+    root /home/deploy/applications/ninjacircles/_site;
+}
+
+server {
+    listen      80;
     server_name www.ninjacircles.com;
-    root /home/deploy/applications/ninja_circles/blog/output;
+    # $scheme will get the http protocol
+    # and 301 is best practice for tablet, phone, desktop and seo
+    return 301 $scheme://ninjacircles.com$request_uri;
 }

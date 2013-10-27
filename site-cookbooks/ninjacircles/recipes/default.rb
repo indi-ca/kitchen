@@ -7,46 +7,38 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "rbenv::default"
-include_recipe "rbenv::ruby_build"
 
 
-
-
-packages = ['curl', 'libcurl4-openssl-dev', 'python-pygments']
-options = ['rdiscount', 'pygments']
-
-r_version = '1.9.3-p194'
-
-
-virtual_env_home = '/home/deploy/.virtualenvs'
-application_home = '/home/deploy/applications'
-target_dir = 'jekyll_blog'
-
-
-#rbenv[:group_users] = ['deploy']
-rbenv_ruby r_version
-
-packages.each do |pkg|
-  package pkg do
-    action :upgrade
+unless node['jekyll']['packages'].empty?
+  node['jekyll']['packages'].each do |pkg|
+    package pkg do
+      action :upgrade
+    end
   end
 end
 
+#unless node['jekyll']['rbenv']['activated']
+#  gem_package 'bundler' do
+#    source node['jekyll']['gem']['source']
+#    gem_binary node['jekyll']['gem']['binary']
+#    action :install
+#  end
+#else
+#  rbenv_gem 'bundler' do
+#    rbenv_version node['jekyll']['rbenv']['version']
+#    action :upgrade
+#  end
+#end
 
-rbenv_gem 'bundler' do
-  ruby_version r_version
-  action :upgrade
-end
-
-
-directory "#{application_home}/#{target_dir}" do
-  owner "deploy"
-  group "deploy"
-  mode 0755
+directory node['jekyll']['deploy_directory'] do
+  owner node['jekyll']['user']
+  group node['jekyll']['group']
+  mode node['jekyll']['access_rights']
 
   recursive true
 end
+
+
 
 
 
@@ -56,7 +48,7 @@ git node['jekyll']['deploy_directory'] do
   user node['jekyll']['user']
   group node['jekyll']['group']
 
-  action :sync
+  action :checkout
 end
 
 
@@ -70,6 +62,7 @@ else
   jekyll_command = "jekyll"
 end
 
+
 unless node['jekyll']['rbenv']['activated']
   execute 'Deploy Jekyll blog' do
     cwd node['jekyll']['deploy_directory']
@@ -78,19 +71,32 @@ unless node['jekyll']['rbenv']['activated']
     action :run
   end
 else
-  #rbenv_script 'Deploy Jekyll blog' do
-  #  rbenv_version node['jekyll']['rbenv']['version']
-  #  root_path node['rbenv']['root_path']
-  #  cwd node['jekyll']['deploy_directory']
-  #
-  #  code %{ bundle install && source /etc/profile.d/rbenv.sh && #{jekyll_command} }
-  #end
 
-  rbenv_execute 'Deploy Jekyll blog' do
-    ruby_version node['jekyll']['rbenv']['version']
+  rbenv_script 'Deploy Jekyll blog' do
+    rbenv_version node['jekyll']['rbenv']['version']
+    root_path node['rbenv']['root_path']
     cwd node['jekyll']['deploy_directory']
 
-    command %{ bundle install }
-  end
+    code <<-EOH
+      touch findme.touchfile
+      bundle install
+    EOH
 
+    #code %{ bundle install && source /etc/profile.d/rbenv.sh && #{jekyll_command} }
+    #code %{ bundle install &&  #{jekyll_command} }
+  end
 end
+
+
+bash 'post-init' do
+  user 'deploy'
+  cwd node['jekyll']['deploy_directory']
+  code <<-EOH
+    git config receive.denyCurrentBranch warn
+    git checkout publish
+    bundle install
+  EOH
+  action :run
+end
+
+

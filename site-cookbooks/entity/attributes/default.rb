@@ -1,4 +1,17 @@
-
+node.default['rbenv']['user_installs'] = [
+    { 'user'    => 'deploy',
+      'rubies'  => ['1.9.3-p0'],
+      'global'  => '1.9.3-p0',
+      'gems'    => {
+          '1.9.3-p0'    => [
+              { 'name'    => 'bundler',
+                'version' => '1.1.rc.5'
+              },
+              { 'name'    => 'rake' }
+          ],
+      }
+    }
+]
 
 
 # Attributes applied if the node doesn't have it set already.
