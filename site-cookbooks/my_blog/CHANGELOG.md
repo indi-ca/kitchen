@@ -1,11 +1,11 @@
-ninjacircles CHANGELOG
-======================
+my_blog CHANGELOG
+=================
 
-This file is used to list changes made in each version of the ninjacircles cookbook.
+This file is used to list changes made in each version of the my_blog cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of ninjacircles
+- [your_name] - Initial release of my_blog
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

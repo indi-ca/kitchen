@@ -21,14 +21,16 @@ server {
     # the name of the directory has to exist
     location /_site {
         autoindex on;
-        root   /home/deploy/applications/jekyll_blog/;
+        root   /home/deploy/applications/blog/;
     }
 }
+
+
 
 server {
     listen      80;
     server_name ninjacircles.com;
-    root /home/deploy/applications/ninjacircles/_site;
+    root /home/deploy/applications/blog/_site;
 }
 
 server {

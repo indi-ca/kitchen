@@ -28,6 +28,7 @@
 
 
     "run_list": [
+        "recipe[entity::users]",
         "recipe[apt::default]",
         "recipe[ruby_build]",
         "recipe[rbenv::user]",
@@ -38,11 +39,10 @@
         "recipe[postgresql::server]",
         "recipe[python]",
 //        "role[base]",
-        "recipe[entity::users]",
         "recipe[entity::database]",
         "recipe[entity::applications]",
-        "recipe[ninjacircles]",
-        "recipe[ninjacircles::dropbox]",
+        "recipe[my_blog]",
+        "recipe[my_blog::dropbox]",
         "recipe[entity]"
     ],
 

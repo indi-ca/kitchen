@@ -12,6 +12,8 @@ add-apt-repository -y ppa:keithw/mosh
 apt-get update
 apt-get install -y mosh
 
+# s3
+apt-get install -y s3cmd
 
 # unattended-upgrades
 # This is not idempotetic

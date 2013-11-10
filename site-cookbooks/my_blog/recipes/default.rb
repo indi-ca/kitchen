@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ninjacircles
+# Cookbook Name:: my_blog
 # Recipe:: default
 #
 # Copyright 2013, YOUR_COMPANY_NAME
@@ -8,7 +8,7 @@
 #
 
 application_home = '/home/deploy/applications'
-target_dir = "ninjacircles"
+target_dir = "blog"
 
 
 unless node['jekyll']['packages'].empty?
@@ -95,7 +95,7 @@ bash 'post-init' do
   cwd node['jekyll']['deploy_directory']
   code <<-EOH
     git config receive.denyCurrentBranch warn
-    git checkout publish
+    git checkout scribble
     bundle install
   EOH
   action :run
