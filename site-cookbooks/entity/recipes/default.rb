@@ -96,10 +96,3 @@ cron "python-gumtree-scraper" do
   action :create
 end
 
-cron "python-gumtree-scraper-2" do
-  minute 7
-  hour 11
-  command "/home/deploy/applications/scrape.sh"
-  user "deploy"
-  action :create
-end
