@@ -1,42 +1,9 @@
-server {
-    listen 80 default;
-
-    access_log <%= node.app.web_dir %>/logs/nginx_access.log;
-    error_log <%= node.app.web_dir %>/logs/nginx_error.log;
-
-    keepalive_timeout 10;
-
-    location /
-        {
-            proxy_pass http://127.0.0.1:8000;
-        }
-
-    # the content is in the static folder within it
-    location /static {
-        autoindex on;
-        root   /home/deploy/;
-    }
-
-    # do not forget the semi colons
-    # the name of the directory has to exist
-    location /_site {
-        autoindex on;
-        root   /home/deploy/applications/blog/;
-    }
-}
-
 
 
 server {
     listen      80;
-    server_name ninjacircles.com;
+    server_name http://174.34.170.180;
     root /home/deploy/applications/blog/_site;
 }
 
-server {
-    listen      80;
-    server_name www.ninjacircles.com;
-    # $scheme will get the http protocol
-    # and 301 is best practice for tablet, phone, desktop and seo
-    return 301 $scheme://ninjacircles.com$request_uri;
-}
+
